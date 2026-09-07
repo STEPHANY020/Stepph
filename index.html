@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMA | Mi Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">U</div>
+            <div>
+                <h2>UMA</h2>
+                <span>Mi biblioteca</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" data-section="inicio">
+                🏠 Inicio
+            </button>
+
+            <button class="nav-btn" data-section="libros">
+                📚 Mis libros
+            </button>
+
+            <button class="nav-btn" data-section="favoritos">
+                ❤️ Favoritos
+            </button>
+
+            <button class="nav-btn" data-section="crear">
+                ✨ Crear libro
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Escribe. Crea. Guarda.</p>
+            <small>Tu historia comienza aquí.</small>
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO -->
+    <main class="main">
+
+        <!-- INICIO -->
+        <section id="inicio" class="section active">
+
+            <div class="topbar">
+                <div>
+                    <span class="small-label">BIENVENIDA A</span>
+                    <h1>Tu biblioteca</h1>
+                </div>
+
+                <button class="primary-btn" onclick="mostrarSeccion('crear')">
+                    + Crear libro
+                </button>
+            </div>
+
+            <div class="hero">
+
+                <div class="hero-text">
+                    <span class="badge">✦ Tu espacio creativo</span>
+
+                    <h2>
+                        Bienvenida a tu
+                        <span>biblioteca.</span>
+                    </h2>
+
+                    <p>
+                        Un lugar para guardar tus pensamientos,
+                        tus historias, tus sueños y todo aquello
+                        que algún día quieras convertir en un libro.
+                    </p>
+
+                    <button class="hero-btn" onclick="mostrarSeccion('crear')">
+                        Comenzar a escribir →
+                    </button>
+                </div>
+
+                <div class="hero-decoration">
+                    <div class="book-decoration">
+                        <span>UMA</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="quote-box">
+                <span>“</span>
+                <p>
+                    Algunas historias no nacen para ser contadas,
+                    nacen para ser escritas.
+                </p>
+            </div>
+
+            <h2 class="section-title">Mis libros</h2>
+
+            <div id="inicioLibros" class="books-grid"></div>
+
+        </section>
+
+
+        <!-- MIS LIBROS -->
+        <section id="libros" class="section">
+
+            <div class="topbar">
+                <div>
+                    <span class="small-label">BIBLIOTECA</span>
+                    <h1>Mis libros</h1>
+                </div>
+
+                <button class="primary-btn" onclick="mostrarSeccion('crear')">
+                    + Nuevo libro
+                </button>
+            </div>
+
+            <div id="todosLosLibros" class="books-grid"></div>
+
+        </section>
+
+
+        <!-- FAVORITOS -->
+        <section id="favoritos" class="section">
+
+            <div class="topbar">
+                <div>
+                    <span class="small-label">MIS HISTORIAS</span>
+                    <h1>Favoritos</h1>
+                </div>
+            </div>
+
+            <div id="librosFavoritos" class="books-grid"></div>
+
+        </section>
+
+
+        <!-- CREAR LIBRO -->
+        <section id="crear" class="section">
+
+            <div class="topbar">
+                <div>
+                    <span class="small-label">NUEVO PROYECTO</span>
+                    <h1>Crear libro</h1>
+                </div>
+            </div>
+
+            <div class="form-card">
+
+                <div class="form-header">
+                    <div>
+                        <h2>Construye tu historia</h2>
+                        <p>Completa la información principal de tu libro.</p>
+                    </div>
+                </div>
+
+                <form id="formLibro">
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label>Título del libro</label>
+                            <input
+                                type="text"
+                                id="titulo"
+                                placeholder="Ej. Cuando la tormenta no se ve"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label>Autor/a</label>
+                            <input
+                                type="text"
+                                id="autor"
+                                placeholder="Nombre del autor"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label>Color de portada</label>
+
+                            <div class="color-row">
+                                <input
+                                    type="color"
+                                    id="colorPortada"
+                                    value="#8b5cf6"
+                                >
+
+                                <span>Selecciona el color de tu portada</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Frase principal</label>
+                            <input
+                                type="text"
+                                id="frase"
+                                placeholder="Una frase especial de tu libro"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <label>Sinopsis</label>
+                        <textarea
+                            id="sinopsis"
+                            rows="5"
+                            placeholder="Escribe de qué trata tu libro..."
+                        ></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label>Logotipo de tu libro</label>
+
+                        <div class="upload-box">
+                            <input
+                                type="file"
+                                id="logoInput"
+                                accept="image/*"
+                            >
+
+                            <div>
+                                <strong>Subir logotipo</strong>
+                                <p>PNG, JPG o WEBP</p>
+                            </div>
+                        </div>
+
+                        <img id="logoPreview" class="logo-preview">
+                    </div>
+
+                    <button class="primary-btn large" type="submit">
+                        Crear libro →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDITOR -->
+        <section id="editor" class="section">
+
+            <div class="editor-top">
+
+                <button class="back-btn" onclick="volverABiblioteca()">
+                    ← Volver
+                </button>
+
+                <div>
+                    <span class="small-label">ESCRIBIENDO</span>
+                    <h1 id="editorBookTitle">Mi libro</h1>
+                </div>
+
+                <button class="primary-btn" onclick="guardarCapitulo()">
+                    💾 Guardar capítulo
+                </button>
+
+            </div>
+
+
+            <div class="chapter-form">
+
+                <div class="field">
+                    <label>Título del capítulo</label>
+                    <input
+                        type="text"
+                        id="capituloTitulo"
+                        placeholder="Ej. Capítulo 1 — Cuando todo comenzó"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Frase inicial</label>
+                    <input
+                        type="text"
+                        id="capituloFrase"
+                        placeholder="Escribe una frase para comenzar..."
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- WORD TOOLBAR -->
+            <div class="word-editor">
+
+                <div class="toolbar">
+
+                    <button onclick="ejecutar('undo')" title="Deshacer">↶</button>
+                    <button onclick="ejecutar('redo')" title="Rehacer">↷</button>
+
+                    <div class="separator"></div>
+
+                    <select id="fontFamily" onchange="cambiarFuente(this.value)">
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Calibri">Calibri</option>
+                    </select>
+
+                    <select id="fontSize" onchange="cambiarTamano(this.value)">
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="18">18</option>
+                        <option value="20">20</option>
+                        <option value="24">24</option>
+                        <option value="28">28</option>
+                        <option value="32">32</option>
+                    </select>
+
+                    <div class="separator"></div>
+
+                    <button onclick="ejecutar('bold')" title="Negrita">
+                        <b>B</b>
+                    </button>
+
+                    <button onclick="ejecutar('italic')" title="Cursiva">
+                        <i>I</i>
+                    </button>
+
+                    <button onclick="ejecutar('underline')" title="Subrayado">
+                        <u>U</u>
+                    </button>
+
+                    <button onclick="ejecutar('strikeThrough')" title="Tachado">
+                        <s>S</s>
+                    </button>
+
+                    <div class="separator"></div>
+
+                    <label class="color-tool" title="Color del texto">
+                        A
+                        <input
+                            type="color"
+                            id="textColor"
+                            value="#222222"
+                            onchange="cambiarColor(this.value)"
+                        >
+                    </label>
+
+                    <label class="color-tool" title="Resaltado">
+                        🖍
+                        <input
+                            type="color"
+                            id="highlightColor"
+                            value="#fff3a3"
+                            onchange="resaltar(this.value)"
+                        >
+                    </label>
+
+                    <div class="separator"></div>
+
+                    <button onclick="ejecutar('justifyLeft')" title="Alinear izquierda">
+                        ☰
+                    </button>
+
+                    <button onclick="ejecutar('justifyCenter')" title="Centrar">
+                        ≡
+                    </button>
+
+                    <button onclick="ejecutar('justifyRight')" title="Alinear derecha">
+                        ☷
+                    </button>
+
+                    <button onclick="ejecutar('justifyFull')" title="Justificar">
+                        ☰
+                    </button>
+
+                    <div class="separator"></div>
+
+                    <button onclick="ejecutar('insertUnorderedList')">
+                        • Lista
+                    </button>
+
+                    <button onclick="ejecutar('insertOrderedList')">
+                        1. Lista
+                    </button>
+
+                    <button onclick="ejecutar('outdent')">
+                        ←
+                    </button>
+
+                    <button onclick="ejecutar('indent')">
+                        →
+                    </button>
+
+                    <div class="separator"></div>
+
+                    <select onchange="cambiarInterlineado(this.value)">
+                        <option value="1">1.0</option>
+                        <option value="1.15">1.15</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2" selected>2.0 APA</option>
+                        <option value="2.5">2.5</option>
+                    </select>
+
+                    <button onclick="insertarEnlace()">
+                        🔗
+                    </button>
+
+                    <button onclick="insertarImagen()">
+                        🖼
+                    </button>
+
+                    <button onclick="ejecutar('removeFormat')">
+                        ✕ Formato
+                    </button>
+
+                </div>
+
+
+                <!-- INFORMACIÓN APA -->
+                <div class="apa-bar">
+                    <strong>Formato APA 7:</strong>
+                    Times New Roman 12 · Interlineado doble · Alineación izquierda · Sangría de primera línea
+                </div>
+
+
+                <!-- HOJA -->
+                <div class="paper-container">
+
+                    <div class="paper">
+
+                        <div id="logoChapter" class="chapter-logo"></div>
+
+                        <div
+                            id="editorContent"
+                            class="editor-content"
+                            contenteditable="true"
+                            spellcheck="true"
+                        >
+                            <p>Comienza a escribir tu historia aquí...</p>
+                        </div>
+
+                        <div class="page-number">
+                            <span class="page-counter">1</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="editor-footer">
+                    <span id="wordCount">0 palabras</span>
+                    <span>Ctrl + S para guardar</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LECTOR -->
+        <section id="lector" class="section">
+
+            <div class="reader-top">
+
+                <button class="back-btn" onclick="volverABiblioteca()">
+                    ← Biblioteca
+                </button>
+
+                <div class="reader-actions">
+                    <button onclick="editarLibroActual()">
+                        ✏️ Editar
+                    </button>
+
+                    <button onclick="descargarPDF()">
+                        📄 Descargar PDF
+                    </button>
+
+                    <button onclick="compartirLibro()">
+                        🔗 Compartir
+                    </button>
+                </div>
+
+            </div>
+
+
+            <article id="bookReader" class="book-reader">
+            </article>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="notification" class="notification"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
